@@ -6,6 +6,8 @@ using Vuforia;
 
 public class UI : MonoBehaviour {
 
+    private Vector2 totalScreenSize = new Vector2(1024, 768);
+    private Vector2 canvasSize = new Vector2(800, 600);
     public Text debbugText;
     public ImageTargetBehaviour image1;
     public ImageTargetBehaviour image2;
@@ -29,11 +31,9 @@ public class UI : MonoBehaviour {
             switch (_name)
             {
                 case "1":
-                case "image1":
                     character1.transform.localPosition = vec;
                     break;
                 case "2":
-                case "image2":
                     character2.transform.localPosition = vec;
                     break;
             }
@@ -69,8 +69,9 @@ public class UI : MonoBehaviour {
         // We project the world coordinates to screen coords (pixels)
         Vector3 screenPoint = Camera.main.WorldToScreenPoint(targetPointInWorldRef);
 
-        float _x = screenPoint.x / 2;
-        float _y = (screenPoint.y - (1024 / 2)) / 2;
-        return new Vector2(_x, _y);
+        float _x = ((screenPoint.x * canvasSize.x) / totalScreenSize.x) / 2;
+        float _y = ((screenPoint.y * canvasSize.y) / totalScreenSize.y)/2;
+
+        return new Vector2(_x, _y - (canvasSize.y/2));
     }
 }
