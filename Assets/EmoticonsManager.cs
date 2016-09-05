@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class EmoticonsManager : MonoBehaviour {
 
     public Emoticon[] emoticons;
     private CharactersManager charactersManager;
+    public Text debbugText; 
 
     void Start()
     {
@@ -17,7 +19,7 @@ public class EmoticonsManager : MonoBehaviour {
             if (emoticon.id == id)
             {
                 emoticon.UpdatePosition(pos);
-                if (CheckCharactersNear(emoticon, pos))
+                if (CheckCharactersNear(emoticon, emoticon.transform.localPosition))
                     emoticon.HideIcon();
                 else
                     emoticon.ShowIcon();
@@ -25,23 +27,26 @@ public class EmoticonsManager : MonoBehaviour {
             }
         }
     }
-    void Update()
-    {
-        ///////////////provisorio
-        int emoTest = 7 - 1;
+    //void Update()
+    //{
+    //    /////////////provisorio
+    //    int emoTest = 8 - 1;
 
-        if (CheckCharactersNear(emoticons[emoTest], emoticons[emoTest].transform.position))
-            emoticons[emoTest].HideIcon();
-        else
-            emoticons[emoTest].ShowIcon();
-    }
+    //    if (CheckCharactersNear(emoticons[emoTest], emoticons[emoTest].transform.position))
+    //        emoticons[emoTest].HideIcon();
+    //    else
+    //        emoticons[emoTest].ShowIcon();
+    //}
     bool CheckCharactersNear(Emoticon emoticon, Vector2 pos)
     {        
         float nearestPos = 1000;
         Character nearestCharacter = null;
+       // nearestCharacter = charactersManager.characters[0];
+      //  debbugText.text = " x: " + pos.x + " _ " + nearestCharacter.transform.localPosition.x + " y: " + pos.y + " _ " + nearestCharacter.transform.localPosition.y;
         foreach (Character character in charactersManager.characters)
         {
-            float distanceToThisCharacter = Vector2.Distance(pos, character.transform.position);
+            float distanceToThisCharacter = Vector2.Distance(pos, character.transform.localPosition);
+           
             if (distanceToThisCharacter < nearestPos && distanceToThisCharacter<100)
             {
                 nearestPos = distanceToThisCharacter;
@@ -59,6 +64,7 @@ public class EmoticonsManager : MonoBehaviour {
                 case 5: nearestCharacter.Walk(true); break;
                 case 6: nearestCharacter.Walk(false); break;
                 case 7: nearestCharacter.jump(); break;
+                case 8: nearestCharacter.hide(); break;
             }
             
          //   print(nearestCharacter.id + "   nearestPos: " + nearestPos);

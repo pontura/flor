@@ -6,11 +6,16 @@ using Vuforia;
 
 public class UI : MonoBehaviour {
 
-    private Vector2 totalScreenSize = new Vector2(1024, 768);
+    private Vector2 totalScreenSize; // = new Vector2(1024, 768);
     private Vector2 canvasSize = new Vector2(800, 600);
     public Text debbugText;
     private EmoticonsManager emoticonsManager;
 
+    void Start()
+    {
+        totalScreenSize = new Vector2(Screen.width, Screen.height);
+        emoticonsManager = GetComponent<EmoticonsManager>();
+    }
     void Update()
     {
         StateManager sm = TrackerManager.Instance.GetStateManager();
@@ -21,10 +26,19 @@ public class UI : MonoBehaviour {
         {            
             Vector2 vec = GetPosition(tb);
             string _name = tb.TrackableName;
-            content +=  _name + " x: " + vec.x + " y: " + vec.y + "    ";
-            emoticonsManager.OnUpdatePositions(int.Parse(_name), vec);
+         //   content +=  _name + " x: " + vec.x + " y: " + vec.y + "    ";
+            int num = int.Parse(_name);
+           // int num = 1;
+            emoticonsManager.OnUpdatePositions(num, vec);
         }
-        debbugText.text = content;
+        if (content == "")
+        {
+            //  debbugText.text = ": " + Time.time;
+        }
+        else
+        {
+            //  debbugText.text = content;
+        }
     }
     Vector2 GetPosition(TrackableBehaviour targetImage)
     {

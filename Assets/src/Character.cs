@@ -4,6 +4,7 @@ using System.Collections;
 
 public class Character : MonoBehaviour {
 
+    public Image image;
     public int id;
     public Animator anim;
     public Animator iconAnimator;
@@ -14,6 +15,8 @@ public class Character : MonoBehaviour {
     public Sprite amor;
     public Sprite llora;
 
+    private bool isHidden;
+
     public enum states
     {
         IDLE,
@@ -22,11 +25,29 @@ public class Character : MonoBehaviour {
         AMOR,
         LLORA,
         WALKING,
-        JUMPING
+        JUMPING,
+        HIDDEN
     }
     public float speed = 0;
     void Update()
     {
+
+        //////////Hiden:
+        float alpha = image.color.a;
+        if (isHidden)
+        {
+            alpha -= Time.deltaTime;
+            if (alpha < 0) alpha = 0;
+            image.color = new Color(1, 1, 1, alpha);
+        }
+        else if (alpha < 1)
+        {
+            alpha += Time.deltaTime;
+            if (alpha > 1) alpha = 1;
+            image.color = new Color(1, 1, 1, alpha);
+        }
+        /////////////
+
         if (state != states.WALKING) return;
         print(transform.localPosition.x);
         if (!CanMove())
@@ -63,6 +84,13 @@ public class Character : MonoBehaviour {
         state = states.JUMPING;
 
         anim.Play("jump", 0, 0);
+        Invoke("Reset", 2);
+    }
+    public void hide()
+    {
+        if (state == states.HIDDEN) return;
+        state = states.HIDDEN;
+        isHidden = true;
         Invoke("Reset", 2);
     }
     public void Happy()
@@ -111,6 +139,7 @@ public class Character : MonoBehaviour {
     }
     void Reset()
     {
+        isHidden = false;
         Idle();
     }
     private bool CanMove()

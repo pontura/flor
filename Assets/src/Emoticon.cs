@@ -23,24 +23,6 @@ public class Emoticon : MonoBehaviour {
         image.color = new Color(1, 1, 1, 1);
     }
 	public void UpdatePosition (Vector2 pos) {
-        //transform.localPosition = pos;
+        transform.localPosition = pos;
 	}
-
-    void Update()
-    {
-        //PointerEventData pointer = new PointerEventData(EventSystem.current);
-        //pointer.position = transform.position;
-
-        //List<RaycastResult> raycastResults = new List<RaycastResult>();
-        //EventSystem.current.RaycastAll(pointer, raycastResults);
-
-        //if (raycastResults.Count > 0)
-        //{
-        //    if (raycastResults[0].gameObject.tag == "Character")
-        //    {
-        //        Character character = raycastResults[0].gameObject.GetComponentInParent<Character>();
-        //        print(character.id);
-        //    }
-        //}
-    }
 }
