@@ -6,12 +6,14 @@ public class EmoticonsManager : MonoBehaviour {
 
     public Emoticon[] emoticons;
     private CharactersManager charactersManager;
-    public Text debbugText; 
+    public Text debbugText;
+    private Data data;
 
-    void Start()
+    public void SetCharacters(CharactersManager charactersManager)
     {
-        charactersManager = GetComponent<CharactersManager>();
+        this.charactersManager = charactersManager;
     }
+
     public void OnUpdatePositions(int id, Vector2 pos)
     {
         foreach (Emoticon emoticon in emoticons)
