@@ -28,7 +28,10 @@ public class Character : MonoBehaviour {
         JUMPING,
         HIDDEN
     }
-    public float speed = 0;
+
+    private float speed = 0;
+    private float speedWalk = 50;
+
     void Update()
     {
 
@@ -73,7 +76,7 @@ public class Character : MonoBehaviour {
         if (state == states.WALKING) return;
         state = states.WALKING;
 
-        if (right) speed = 20; else speed = -20;
+        if (right) speed = speedWalk; else speed = -speedWalk;
 
         anim.Play("walk",0,0);
         Invoke("Reset", 4);

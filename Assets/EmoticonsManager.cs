@@ -21,7 +21,9 @@ public class EmoticonsManager : MonoBehaviour {
             if (emoticon.id == id)
             {
                 emoticon.UpdatePosition(pos);
-                if (CheckCharactersNear(emoticon, emoticon.transform.localPosition))
+
+                // si es de dia/noche no cambia el estado segun el character al que afecta:
+                if (emoticon.id != 2 && CheckCharactersNear(emoticon, emoticon.transform.localPosition))
                     emoticon.HideIcon();
                 else
                     emoticon.ShowIcon();
@@ -32,7 +34,7 @@ public class EmoticonsManager : MonoBehaviour {
     //void Update()
     //{
     //    /////////////provisorio
-    //    int emoTest = 8 - 1;
+    //    int emoTest = 1;
 
     //    if (CheckCharactersNear(emoticons[emoTest], emoticons[emoTest].transform.position))
     //        emoticons[emoTest].HideIcon();
@@ -40,7 +42,8 @@ public class EmoticonsManager : MonoBehaviour {
     //        emoticons[emoTest].ShowIcon();
     //}
     bool CheckCharactersNear(Emoticon emoticon, Vector2 pos)
-    {        
+    {
+
         float nearestPos = 1000;
         Character nearestCharacter = null;
        // nearestCharacter = charactersManager.characters[0];
