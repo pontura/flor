@@ -64,8 +64,8 @@ public class EmoticonsManager : MonoBehaviour {
             {
                 case 1: nearestCharacter.Happy(); break;
                 case 2: nearestCharacter.Amor(); break;
-                case 3: nearestCharacter.Enojado(); break;
-                case 4: nearestCharacter.Llora(); break;
+                case 3: nearestCharacter.Llora(); break;
+                case 4: nearestCharacter.Enojado(); break;                
                 case 5: nearestCharacter.Walk(true); break;
                 case 6: nearestCharacter.Walk(false); break;
                 case 7: nearestCharacter.jump(); break;

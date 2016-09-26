@@ -114,7 +114,7 @@ public class Character : MonoBehaviour {
 
         iconAnimator.GetComponentInChildren<Image>().sprite = enojado;
         iconAnimator.gameObject.SetActive(true);
-        anim.Play("happy");
+        anim.Play("enojado");
         iconAnimator.Play("icon_happy");
         Invoke("Reset", 1);
     }
@@ -136,7 +136,7 @@ public class Character : MonoBehaviour {
 
         iconAnimator.GetComponentInChildren<Image>().sprite = llora;
         iconAnimator.gameObject.SetActive(true);
-        anim.Play("happy");
+        anim.Play("llora");
         iconAnimator.Play("icon_happy");
         Invoke("Reset", 1);
     }

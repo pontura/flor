@@ -52,9 +52,10 @@ public class Emoticon : MonoBehaviour {
     }
     void SetAudio(bool isOn)
     {
-        if (audioSource == null) return;
-
-        if (isOn) audioSource.Play();
-        else audioSource.Stop();
+        if (audioSource != null)
+        {
+            if (isOn) audioSource.Play();
+            else audioSource.Stop();
+        }
     }
 }
