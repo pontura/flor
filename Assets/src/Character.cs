@@ -147,8 +147,20 @@ public class Character : MonoBehaviour {
     }
     private bool CanMove()
     {
-        if (transform.localPosition.x > 310 || transform.localPosition.x < -310)
+        Vector2 pos = transform.localPosition;
+        
+        if (transform.localPosition.x > 310)
+        {
+            pos.x -= 1f;
+            transform.localPosition = pos;
             return false;
+        }
+        else if (transform.localPosition.x < -310)
+        {
+            pos.x += 1f;
+            transform.localPosition = pos;
+            return false;
+        }
         return true;
     }
 }

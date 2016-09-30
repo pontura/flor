@@ -10,12 +10,11 @@ public class Emoticon : MonoBehaviour {
     public bool isOn;
     private Image image;
     private float lastTimeOnScene;
-    private AudioSource audioSource;
 
-    void Start()
+    void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
         image = GetComponentInChildren<Image>();
+        SetAudio(false);
     }
     public void HideIcon()
     {
@@ -50,12 +49,14 @@ public class Emoticon : MonoBehaviour {
             Events.OnChangeBg(false);
         }
     }
-    void SetAudio(bool isOn)
+    void SetAudio(bool _isOn)
     {
-        if (audioSource != null)
+        if (GetComponent<AudioSource>() != null)
         {
-            if (isOn) audioSource.Play();
-            else audioSource.Stop();
+            if (_isOn)
+                GetComponent<AudioSource>().volume = 1;
+            else
+                GetComponent<AudioSource>().volume = 0;
         }
     }
 }
