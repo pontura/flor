@@ -149,13 +149,13 @@ public class Character : MonoBehaviour {
     {
         Vector2 pos = transform.localPosition;
         
-        if (transform.localPosition.x > 310)
+        if (transform.localPosition.x > 340)
         {
             pos.x -= 1f;
             transform.localPosition = pos;
             return false;
         }
-        else if (transform.localPosition.x < -310)
+        else if (transform.localPosition.x < -340)
         {
             pos.x += 1f;
             transform.localPosition = pos;
