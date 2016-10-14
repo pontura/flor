@@ -98,6 +98,7 @@ public class Character : MonoBehaviour {
     }
     public void Happy()
     {
+        if (id == 4) return;
         if (state == states.HAPPY) return;
         state = states.HAPPY;
 
@@ -109,6 +110,7 @@ public class Character : MonoBehaviour {
     }
     public void Enojado()
     {
+        if (id == 4) return;
         if (state == states.ENOJADO) return;
         state = states.ENOJADO;
 
@@ -120,6 +122,7 @@ public class Character : MonoBehaviour {
     }
     public void Amor()
     {
+        if (id == 4) return;
         if (state == states.AMOR) return;
         state = states.AMOR;
 
@@ -131,6 +134,7 @@ public class Character : MonoBehaviour {
     }
     public void Llora()
     {
+        if (id == 4) return;
         if (state == states.LLORA) return;
         state = states.LLORA;
 
